@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0d0a1a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Dira's Psych Vibes</title>
+    <meta name="description" content="Ruang semangat pribadi Dira — quotes motivasi, penyemangat kuliah, mood check-in, dan lebih banyak lagi." />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  </head>
+  <body>
+    <div class="bg-gradient" aria-hidden="true"></div>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- NAV -->
+    <nav class="top-nav" role="navigation" aria-label="Navigasi utama">
+      <span class="nav-logo">✦ Dira</span>
+      <ul class="nav-links">
+        <li>
+          <a href="#hero" class="nav-link active" aria-current="page"><i class="bi bi-house-heart-fill"></i> Home</a>
+        </li>
+        <li>
+          <a href="#quotes" class="nav-link"><i class="bi bi-chat-square-quote-fill"></i> Quotes</a>
+        </li>
+        <li>
+          <a href="#mood" class="nav-link"><i class="bi bi-heart-pulse-fill"></i> Mood</a>
+        </li>
+        <li>
+          <a href="#study" class="nav-link"><i class="bi bi-journal-bookmark-fill"></i> Belajar</a>
+        </li>
+        <li>
+          <a href="#pomodoro" class="nav-link"><i class="bi bi-stopwatch-fill"></i> Timer</a>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="wrapper" role="main">
+      <!-- HERO -->
+      <section id="hero">
+        <div class="profile-frame fade-in" aria-label="Foto profil Dira">
+          <div class="profile-ring" aria-hidden="true"></div>
+          <img src="immmg/dirr.jpeg" alt="Dira — Mahasiswi Psikologi" class="profile-img" id="profileImg" />
+          <span class="sparkle"><i class="bi bi-stars"></i></span>
+          <span class="sparkle"><i class="bi bi-flower1"></i></span>
+          <span class="sparkle"><i class="bi bi-star-fill"></i></span>
+          <span class="sparkle"><i class="bi bi-gem"></i></span>
+          <span class="sparkle"><i class="bi bi-moon-stars-fill"></i></span>
+        </div>
+        <p class="hero-greeting fade-in fade-in-delay-1">✦ Welcome to your space ✦</p>
+        <h1 class="hero-name fade-in fade-in-delay-2">Dira</h1>
+        <div class="typing-wrapper fade-in fade-in-delay-3" aria-label="Mahasiswi Psikologi">
+          <i class="bi bi-braces-asterisk" style="color: var(--pink); font-size: 1rem"></i>
+          <span class="typing-text" id="typingText"></span>
+          <span class="cursor" aria-hidden="true"></span>
+        </div>
+        <p class="hero-tagline fade-in fade-in-delay-4">
+          "Otak cerdas, hati kuat, jiwa tangguh.<br />
+          You were made for this, Dira."
+        </p>
+        <div class="scroll-hint fade-in fade-in-delay-4" aria-label="Scroll ke bawah">
+          <i class="bi bi-chevron-double-down"></i>
+          <p>Scroll yuk~</p>
+        </div>
+      </section>
+
+      <!-- QUOTES -->
+      <section id="quotes" class="section glass-card">
+        <div class="section-label"><i class="bi bi-stars"></i> Daily Dose</div>
+        <h2 class="section-title">Kata Semangat Hari Ini</h2>
+        <p class="section-sub">Klik tombolnya buat dapet quote baru kapan aja kamu butuh!</p>
+        <div class="quote-scene" id="quoteScene">
+          <div class="quote-card-inner" id="quoteCardInner">
+            <div class="quote-display" id="quoteDisplay">
+              <p class="quote-text" id="quoteText">Loading your daily inspiration...</p>
+              <p class="quote-author" id="quoteAuthor"></p>
+            </div>
+          </div>
+        </div>
+        <div class="quote-actions">
+          <button class="btn btn-primary" id="btnNewQuote" aria-label="Dapatkan quote baru"><i class="bi bi-shuffle"></i> Quote Baru</button>
+          <button class="btn btn-outline btn-copy" id="btnCopyQuote" aria-label="Salin quote"><i class="bi bi-clipboard" id="copyIcon"></i> <span id="copyLabel">Copy</span></button>
+          <button class="btn btn-outline" id="btnFavQuote" aria-label="Simpan ke favorit"><i class="bi bi-bookmark-heart" id="favIcon"></i> <span id="favLabel">Simpan</span></button>
+        </div>
+        <div id="savedQuotesArea" style="margin-top: 20px; display: none">
+          <p class="section-label" style="margin-bottom: 12px"><i class="bi bi-bookmark-heart-fill"></i> Quotes Favoritmu</p>
+          <div id="savedQuotesList"></div>
+        </div>
+      </section>
+
+      <!-- MOOD -->
+      <section id="mood" class="section glass-card">
+        <div class="section-label"><i class="bi bi-heart-pulse-fill"></i> Self-Check</div>
+        <h2 class="section-title">Mood Check-In</h2>
+        <p class="section-sub">Lagi ngerasa gimana hari ini? Jujur aja, ini ruang amanmu.</p>
+
+        <div class="mood-grid" role="group" aria-label="Pilih mood">
+          <button class="mood-btn" id="mood-happy" data-mood="happy" aria-pressed="false"><i class="bi bi-emoji-smile-fill mood-emoji"></i><span>Happy</span></button>
+          <button class="mood-btn" id="mood-semangat" data-mood="semangat" aria-pressed="false"><i class="bi bi-emoji-laughing-fill mood-emoji"></i><span>Semangat</span></button>
+          <button class="mood-btn" id="mood-stressed" data-mood="stressed" aria-pressed="false"><i class="bi bi-emoji-dizzy-fill mood-emoji"></i><span>Stressed</span></button>
+          <button class="mood-btn" id="mood-tired" data-mood="tired" aria-pressed="false"><i class="bi bi-emoji-expressionless-fill mood-emoji"></i><span>Capek</span></button>
+          <button class="mood-btn" id="mood-sad" data-mood="sad" aria-pressed="false"><i class="bi bi-emoji-frown-fill mood-emoji"></i><span>Sedih</span></button>
+          <button class="mood-btn" id="mood-mager" data-mood="mager" aria-pressed="false"><i class="bi bi-emoji-neutral-fill mood-emoji"></i><span>Mager</span></button>
+        </div>
+
+        <div class="mood-response" id="moodResponse" aria-live="polite">
+          <p class="mood-response-title" id="moodResponseTitle"></p>
+          <p class="mood-response-text" id="moodResponseText"></p>
+        </div>
+
+        <div class="journal-area">
+          <div class="journal-label">
+            <i class="bi bi-pencil-square"></i>
+            <span>Tulis ceritamu hari ini di sini</span>
+          </div>
+          <textarea class="journal-input" id="journalInput" placeholder="Ceritain hari ini... apa yang terjadi, apa yang kamu rasakan, apapun yang ada di pikiranmu. Ini ruang pribadimu." rows="5" aria-label="Area diary harian"></textarea>
+          <div class="save-journal-row">
+            <button class="btn btn-primary btn-sm" id="btnSaveJournal" aria-label="Simpan ke diary"><i class="bi bi-floppy2-fill"></i> Simpan ke Diary</button>
+          </div>
+        </div>
+
+        <!-- Diary History -->
+        <div id="diaryHistoryArea" style="display: none; margin-top: 28px">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px">
+            <p class="section-label" style="margin: 0"><i class="bi bi-journal-richtext"></i> Riwayat Diary</p>
+            <span class="diary-counter" id="diaryCount">0 catatan</span>
+          </div>
+          <div id="diaryList"></div>
+        </div>
+      </section>
+
+      <!-- STUDY TRACKER -->
+      <section id="study" class="section glass-card">
+        <div class="section-label"><i class="bi bi-graph-up-arrow"></i> Progress</div>
+        <h2 class="section-title">Study Tracker</h2>
+        <p class="section-sub">Udah belajar hari ini? Tekan tombol di bawah buat tandai, terus pantau streak-mu dari minggu ke minggu. Makin konsisten, makin kelihatan perkembanganmu!</p>
+
+        <!-- Today Check-In -->
+        <div class="today-checkin" id="todayCheckin">
+          <div class="today-checkin-info">
+            <div class="today-label-row">
+              <i class="bi bi-calendar-check-fill"></i>
+              <span>📌 Tandai Hari Ini</span>
+            </div>
+            <div class="today-date-text" id="todayDateDisplay">—</div>
+          </div>
+          <button class="btn-today-study" id="btnTodayStudy" aria-label="Tandai sudah belajar hari ini" aria-pressed="false">
+            <i class="bi bi-circle" id="todayStudyIcon"></i>
+            <span id="todayStudyLabel">Belum belajar</span>
+          </button>
+        </div>
+
+        <!-- Weekly View -->
+        <div class="week-view">
+          <p class="week-label">📅 Kalender Minggu Ini — hari yang kamu tandai akan muncul di sini</p>
+          <div class="week-grid" id="weekGrid" role="grid" aria-label="Kalender belajar minggu ini"></div>
+        </div>
+
+        <!-- Streak -->
+        <div class="streak-info" id="streakInfo">
+          <div class="streak-badge"><i class="bi bi-fire"></i> Streak: <span id="streakCount">0</span> hari berturut-turut</div>
+          <div class="streak-badge"><i class="bi bi-check2-circle"></i> Total: <span id="totalCount">0</span> hari belajar</div>
+        </div>
+
+        <!-- Todo List -->
+        <div style="margin-top: 36px">
+          <p class="section-label" style="margin-bottom: 6px"><i class="bi bi-list-check"></i> Tugas &amp; Goals Hari Ini</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px">Catat tugas atau goal yang ingin kamu selesaikan — centang kalau udah done!</p>
+          <div class="todo-input-row">
+            <input type="text" class="todo-input" id="todoInput" placeholder="Contoh: Baca bab 3 Psikologi Kepribadian..." maxlength="100" aria-label="Input tugas baru" />
+            <button class="btn btn-primary btn-sm" id="btnAddTodo" aria-label="Tambah tugas"><i class="bi bi-plus-lg"></i> Tambah</button>
+          </div>
+          <div class="progress-bar-wrap" id="todoProgressWrap" aria-hidden="true">
+            <div class="progress-bar-fill" id="todoProgressBar" style="width: 0%"></div>
+          </div>
+          <ul class="todo-list" id="todoList" aria-label="Daftar tugas"></ul>
+        </div>
+      </section>
+
+      <!-- POMODORO -->
+      <section id="pomodoro" class="section glass-card">
+        <div class="section-label"><i class="bi bi-stopwatch-fill"></i> Focus Mode</div>
+        <h2 class="section-title">Pomodoro Timer</h2>
+
+        <div class="pomo-tabs" role="tablist" aria-label="Mode timer">
+          <button class="pomo-tab active" id="tabFocus" role="tab" aria-selected="true" data-minutes="25" data-mode="Focus Time"><i class="bi bi-crosshair"></i> Focus (25m)</button>
+          <button class="pomo-tab" id="tabShort" role="tab" aria-selected="false" data-minutes="5" data-mode="Short Break"><i class="bi bi-cup-hot-fill"></i> Break (5m)</button>
+          <button class="pomo-tab" id="tabLong" role="tab" aria-selected="false" data-minutes="15" data-mode="Long Break"><i class="bi bi-battery-half"></i> Istirahat (15m)</button>
+        </div>
+
+        <div class="pomodoro-wrap">
+          <div class="pomo-ring-wrap" aria-label="Timer visual">
+            <svg class="pomo-svg" viewBox="0 0 180 180">
+              <defs>
+                <linearGradient id="pomoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color: #9b7ec8" />
+                  <stop offset="100%" style="stop-color: #e97fa0" />
+                </linearGradient>
+              </defs>
+              <circle class="pomo-bg-ring" cx="90" cy="90" r="80" />
+              <circle class="pomo-progress-ring" id="pomoRing" cx="90" cy="90" r="80" />
+            </svg>
+            <div class="pomo-time-display">
+              <div class="pomo-time" id="pomoTime" aria-live="polite" aria-label="Waktu tersisa">25:00</div>
+              <div class="pomo-mode" id="pomoMode">Focus Time</div>
+            </div>
+          </div>
+          <div class="pomo-controls">
+            <button class="btn btn-primary" id="btnPomoStart" aria-label="Mulai atau pause timer"><i class="bi bi-play-fill" id="pomoPlayIcon"></i> <span id="pomoStartLabel">Mulai</span></button>
+            <button class="btn btn-outline" id="btnPomoReset" aria-label="Reset timer"><i class="bi bi-arrow-counterclockwise"></i> Reset</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Made with <i class="bi bi-heart-fill" style="color: var(--pink); font-size: 0.9rem"></i> for Dira &nbsp;·&nbsp; Semangat terus ya, kamu bisa!</p>
+      <p style="margin-top: 6px; font-size: 0.75rem">Psikologi · 2024–2025</p>
+    </footer>
+
+    <!-- =============================================
+     FLOATING MUSIC PLAYER — Dira's Vibes
+     ============================================= -->
+    <div id="musicPlayer" class="music-player" role="complementary" aria-label="Music player">
+      <!-- Top bar -->
+      <div class="mp-topbar">
+        <span class="mp-label"><i class="bi bi-music-note-beamed"></i> Dira's Vibes</span>
+        <div class="mp-topbar-actions">
+          <button class="mp-icon-btn" id="mpPlaylistToggle" aria-label="Toggle tracklist" title="Tracklist">
+            <i class="bi bi-list-ul" id="mpQueueIcon"></i>
+          </button>
+          <button class="mp-icon-btn" id="mpMinimize" aria-label="Minimize player" title="Minimize">
+            <i class="bi bi-dash-lg"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Now playing -->
+      <div class="mp-now-playing">
+        <div class="mp-cover">
+          <div class="mp-cover-art" id="mpCoverArt" aria-hidden="true"></div>
+          <div class="mp-wave" id="mpWave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="mp-info">
+          <p class="mp-title" id="mpTitle">Pilih lagu untuk mulai~</p>
+          <p class="mp-artist" id="mpArtist">Dira's Vibes Playlist</p>
+        </div>
+        <button class="mp-icon-btn mp-heart-btn" id="mpHeart" aria-label="Like song">
+          <i class="bi bi-heart" id="mpHeartIcon"></i>
+        </button>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="mp-progress-wrap">
+        <span class="mp-time" id="mpCurrentTime">0:00</span>
+        <div class="mp-progress-track" id="mpProgressTrack" role="slider" aria-label="Posisi lagu" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="mp-progress-fill" id="mpProgressFill"></div>
+          <div class="mp-progress-thumb" id="mpProgressThumb"></div>
+        </div>
+        <span class="mp-time" id="mpDuration">0:00</span>
+      </div>
+
+      <!-- Controls -->
+      <div class="mp-controls">
+        <button class="mp-ctrl-btn mp-ctrl-sm" id="mpShuffle" aria-label="Shuffle" title="Acak lagu">
+          <i class="bi bi-shuffle"></i>
+        </button>
+        <button class="mp-ctrl-btn mp-ctrl-md" id="mpPrev" aria-label="Lagu sebelumnya">
+          <i class="bi bi-skip-start-fill"></i>
+        </button>
+        <button class="mp-play-btn" id="mpPlayBtn" aria-label="Play / Pause">
+          <i class="bi bi-play-fill" id="mpPlayIcon"></i>
+        </button>
+        <button class="mp-ctrl-btn mp-ctrl-md" id="mpNext" aria-label="Lagu berikutnya">
+          <i class="bi bi-skip-end-fill"></i>
+        </button>
+        <button class="mp-ctrl-btn mp-ctrl-sm" id="mpRepeat" aria-label="Repeat" title="Ulangi">
+          <i class="bi bi-repeat" id="mpRepeatIcon"></i>
+        </button>
+      </div>
+
+      <!-- Volume -->
+      <div class="mp-volume-row">
+        <button class="mp-ctrl-btn mp-ctrl-sm" id="mpMute" aria-label="Mute / Unmute">
+          <i class="bi bi-volume-up-fill" id="mpMuteIcon"></i>
+        </button>
+        <input type="range" class="mp-vol-slider" id="mpVolume" min="0" max="100" value="80" aria-label="Volume" />
+      </div>
+
+      <!-- Tracklist collapsible -->
+      <div class="mp-playlist-wrap" id="mpPlaylistWrap">
+        <div class="mp-playlist-header">
+          <i class="bi bi-music-note-list"></i> Tracklist
+          <span class="mp-track-count">5 lagu</span>
+        </div>
+        <ul class="mp-playlist-ul" id="mpPlaylistEl" role="list" aria-label="Tracklist"></ul>
+      </div>
+    </div>
+
+    <!-- Minimized pill -->
+    <div id="mpPill" class="mp-pill" style="display: none" role="complementary" aria-label="Mini player">
+      <div class="mp-pill-cover" id="mpPillCover"></div>
+      <div class="mp-pill-info">
+        <span class="mp-pill-title" id="mpPillTitle">Musik</span>
+        <span class="mp-pill-artist" id="mpPillArtist">Dira's Vibes</span>
+      </div>
+      <button class="mp-pill-btn" id="mpPillPlay" aria-label="Play / Pause">
+        <i class="bi bi-play-fill" id="mpPillPlayIcon"></i>
+      </button>
+      <button class="mp-pill-btn" id="mpPillExpand" aria-label="Expand player">
+        <i class="bi bi-chevron-up"></i>
+      </button>
+    </div>
+
+    <audio id="mpAudio" preload="metadata"></audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
